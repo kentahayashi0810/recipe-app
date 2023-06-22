@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [recipes, setRecipes] = useState(recipelist);
   const [shoppingList, setShoppingList] = useState([]);
+  const [isActivated, setIsActivated] = useState(false);
 
   const addHandler = (ingredients) => {
     ingredients.map((item) => {
@@ -20,6 +21,16 @@ export default function Home() {
           return [...prevShoppingList, item];
         });
       }
+    });
+  };
+
+  const handleCopy = () => {
+    const ingredientsStr = shoppingList.join(",");
+    return navigator.clipboard.writeText(ingredientsStr).then(() => {
+      setIsActivated(true);
+      setTimeout(() => {
+        setIsActivated(false);
+      }, 1600);
     });
   };
 
@@ -49,6 +60,8 @@ export default function Home() {
             return <li key={item}>{item}</li>;
           })}
         </ul>
+        <button onClick={handleCopy}>Copy</button>
+        <span className="message">{isActivated ? "Copied!!" : ""}</span>
       </main>
     </>
   );
