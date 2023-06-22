@@ -77,64 +77,69 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1></h1>
-        {/* 料理リストの書き出し */}
-        <ul className={styles.recipelist}>
-          {recipes.map((recipe, index) => {
-            return (
-              <li key={recipe.name + index}>
-                <button onClick={addHandler.bind(this, recipe.ingredients)}>
-                  Add
-                </button>
-                <span>{recipe.name}</span>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* 必要材料と振り分けボタンの書き出し */}
-        <ul className={styles.addedIngredients}>
-          {shoppingList.map((item, index) => {
-            return (
-              <li key={index}>
-                <span>{item}</span>
-                <button onClick={moveItemHandler.bind(this, "Kenta", item)}>
-                  Kenta
-                </button>
-                <button onClick={moveItemHandler.bind(this, "Lea", item)}>
-                  Lea
-                </button>
-                <button onClick={deleteIngredient.bind(this, item)}>
-                  No need to buy
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* Leaの買い物リスト */}
-        <div>
-          <h2>Lea's Shopping List</h2>
-          <ul>
-            {LeaItems.map((item) => {
-              return <li key={item}>{item}</li>;
-            })}
-          </ul>
-          <button onClick={handleCopy.bind(null, "Lea")}>Copy</button>
-          <span className="message">{isActivated ? "Copied!!" : ""}</span>
-        </div>
-
-        {/* Kentaの買い物リスト */}
-        <div>
-          <h2>Kenta's Shopping List</h2>
-          <ul>
-            {KentaItems.map((item) => {
-              return <li key={item}>{item}</li>;
-            })}
-          </ul>
-          <button onClick={handleCopy.bind(null, "Kenta")}>Copy</button>
-          <span className="message">{isActivated ? "Copied!!" : ""}</span>
+      <main className={styles.main}>
+        <div className={styles.inner}>
+          <div className={styles.container}>
+            <h1 className={styles.title}>Recipe App</h1>
+            {/* 料理リストの書き出し */}
+            <ul className={styles.recipelist}>
+              {recipes.map((recipe, index) => {
+                return (
+                  <li className={styles.recipe} key={recipe.name + index}>
+                    <span>{recipe.name}</span>
+                    <button onClick={addHandler.bind(this, recipe.ingredients)}>
+                      Add
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          {/* 必要材料と振り分けボタンの書き出し */}
+          <div className={styles.container}>
+            <ul className={styles.addedIngredients}>
+              {shoppingList.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <span>{item}</span>
+                    <button onClick={moveItemHandler.bind(this, "Kenta", item)}>
+                      Kenta
+                    </button>
+                    <button onClick={moveItemHandler.bind(this, "Lea", item)}>
+                      Lea
+                    </button>
+                    <button onClick={deleteIngredient.bind(this, item)}>
+                      No need to buy
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          {/* Leaの買い物リスト */}
+          <div className={styles.shoppingList}>
+            <div>
+              <h2>Lea's Shopping List</h2>
+              <ul>
+                {LeaItems.map((item) => {
+                  return <li key={item}>{item}</li>;
+                })}
+              </ul>
+              <button onClick={handleCopy.bind(null, "Lea")}>Copy</button>
+              <span className="message">{isActivated ? "Copied!!" : ""}</span>
+            </div>
+            {/* Kentaの買い物リスト */}
+            <div>
+              <h2>Kenta's Shopping List</h2>
+              <ul>
+                {KentaItems.map((item) => {
+                  return <li key={item}>{item}</li>;
+                })}
+              </ul>
+              <button onClick={handleCopy.bind(null, "Kenta")}>Copy</button>
+              <span className="message">{isActivated ? "Copied!!" : ""}</span>
+            </div>
+          </div>
         </div>
       </main>
     </>
