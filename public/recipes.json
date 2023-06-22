@@ -9,10 +9,91 @@
       "coriander",
       "mint",
       "shrimp"
-    ]
+    ],
+    "url": ""
   },
   {
     "name": "Feta cheese Salad",
-    "ingredients": ["lettus", "white vinegar", "Mustard", "feta cheese"]
+    "ingredients": ["lettuce", "white vinegar", "Mustard", "feta cheese"],
+    "url": ""
+  },
+  {
+    "name": "Hachis Parmentier",
+    "ingredients": ["Potatoes", "Shredded Cheese", "Minced Meat", "Milk"],
+    "url": ""
+  },
+  {
+    "name": "Nabe",
+    "ingredients": [
+      "Hakusai",
+      "bean sprout",
+      "Nabe soup",
+      "minced chicken",
+      "ginger",
+      "carrot"
+    ],
+    "url": ""
+  },
+  {
+    "name": "Spinach Saussage",
+    "ingredients": ["Spinach", "Saussages", "Sesami oil"],
+    "url": ""
+  },
+  {
+    "name": "Miso soup",
+    "ingredients": ["miso", "tofu", "moyashi", "green onion"],
+    "url": ""
+  },
+  {
+    "name": "Hamburger",
+    "ingredients": ["Buns", "hamburger stakes", "lettuce", "cheese", "onion"],
+    "url": ""
+  },
+  {
+    "name": "Jennifer Aniston Salad",
+    "ingredients": [
+      "chick peas",
+      "cucumber",
+      "quinoa",
+      "red onions",
+      "feta cheese",
+      "mint",
+      "parsley",
+      "olive oil",
+      "lemon"
+    ],
+    "url": ""
+  },
+  {
+    "name": "Bun Bo Nam Bo",
+    "ingredients": [
+      "beef",
+      "lettuce",
+      "carrot",
+      "coriander",
+      "moyashi",
+      "rice noodles",
+      "fish sauce",
+      "garlic",
+      "ginger",
+      "lemon",
+      "oyster sauce",
+      "peanuts"
+    ],
+    "url": ""
+  },
+  {
+    "name": "Fajitas",
+    "ingredients": [
+      "paprika",
+      "meat",
+      "tortilla",
+      "red onions",
+      " lettuce",
+      "avocado",
+      "ketchup",
+      "lemon"
+    ],
+    "url": ""
   }
 ]

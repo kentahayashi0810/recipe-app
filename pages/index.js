@@ -11,6 +11,8 @@ export default function Home() {
   const [recipes, setRecipes] = useState(recipelist);
   const [shoppingList, setShoppingList] = useState([]);
   const [isActivated, setIsActivated] = useState(false);
+  const [LeaItems, setLeaItems] = useState([]);
+  const [KentaItems, setKentaItems] = useState([]);
 
   const addHandler = (ingredients) => {
     ingredients.map((item) => {
@@ -24,8 +26,40 @@ export default function Home() {
     });
   };
 
-  const handleCopy = () => {
-    const ingredientsStr = shoppingList.join(",");
+  const moveItemHandler = (name, item) => {
+    // それぞれの買い物リストにアイテムを追加
+    switch (name) {
+      case "Lea":
+        setLeaItems((prevItems) => {
+          return [...prevItems, item];
+        });
+        break;
+
+      case "Kenta":
+        setKentaItems((prevItems) => {
+          return [...prevItems, item];
+        });
+        break;
+
+      default:
+        return;
+    }
+
+    // 必要材料リストから追加したアイテムを削除
+    deleteIngredient(item);
+  };
+
+  const deleteIngredient = (item) => {
+    const filteredShoppingList = shoppingList.filter(
+      (ingredient) => ingredient !== item
+    );
+
+    setShoppingList(filteredShoppingList);
+  };
+
+  const handleCopy = (name) => {
+    const ingredientsStr =
+      name === "Lea" ? LeaItems.join(", ") : KentaItems.join(", ");
     return navigator.clipboard.writeText(ingredientsStr).then(() => {
       setIsActivated(true);
       setTimeout(() => {
@@ -42,11 +76,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <main>
+        <h1></h1>
+        {/* 料理リストの書き出し */}
         <ul className={styles.recipelist}>
-          {recipes.map((recipe) => {
+          {recipes.map((recipe, index) => {
             return (
-              <li key={recipe.name}>
+              <li key={recipe.name + index}>
                 <button onClick={addHandler.bind(this, recipe.ingredients)}>
                   Add
                 </button>
@@ -55,13 +92,50 @@ export default function Home() {
             );
           })}
         </ul>
+
+        {/* 必要材料と振り分けボタンの書き出し */}
         <ul className={styles.addedIngredients}>
-          {shoppingList.map((item) => {
-            return <li key={item}>{item}</li>;
+          {shoppingList.map((item, index) => {
+            return (
+              <li key={index}>
+                <span>{item}</span>
+                <button onClick={moveItemHandler.bind(this, "Kenta", item)}>
+                  Kenta
+                </button>
+                <button onClick={moveItemHandler.bind(this, "Lea", item)}>
+                  Lea
+                </button>
+                <button onClick={deleteIngredient.bind(this, item)}>
+                  No need to buy
+                </button>
+              </li>
+            );
           })}
         </ul>
-        <button onClick={handleCopy}>Copy</button>
-        <span className="message">{isActivated ? "Copied!!" : ""}</span>
+
+        {/* Leaの買い物リスト */}
+        <div>
+          <h2>Lea's Shopping List</h2>
+          <ul>
+            {LeaItems.map((item) => {
+              return <li key={item}>{item}</li>;
+            })}
+          </ul>
+          <button onClick={handleCopy.bind(null, "Lea")}>Copy</button>
+          <span className="message">{isActivated ? "Copied!!" : ""}</span>
+        </div>
+
+        {/* Kentaの買い物リスト */}
+        <div>
+          <h2>Kenta's Shopping List</h2>
+          <ul>
+            {KentaItems.map((item) => {
+              return <li key={item}>{item}</li>;
+            })}
+          </ul>
+          <button onClick={handleCopy.bind(null, "Kenta")}>Copy</button>
+          <span className="message">{isActivated ? "Copied!!" : ""}</span>
+        </div>
       </main>
     </>
   );
