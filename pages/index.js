@@ -13,6 +13,7 @@ export default function Home() {
   const [isActivated, setIsActivated] = useState(false);
   const [LeaItems, setLeaItems] = useState([]);
   const [KentaItems, setKentaItems] = useState([]);
+  const [sharedItems, setSharedItems] = useState([]);
 
   const addHandler = (ingredients) => {
     ingredients.map((item) => {
@@ -41,6 +42,12 @@ export default function Home() {
         });
         break;
 
+      case "shared":
+        setSharedItems((prevItems) => {
+          return [...prevItems, item];
+        });
+        break;
+
       default:
         return;
     }
@@ -59,7 +66,11 @@ export default function Home() {
 
   const handleCopy = (name) => {
     const ingredientsStr =
-      name === "Lea" ? LeaItems.join(", ") : KentaItems.join(", ");
+      name === "Lea"
+        ? LeaItems.join(", ")
+        : "kenta"
+        ? KentaItems.join(", ")
+        : SharedItems.join(", ");
     return navigator.clipboard.writeText(ingredientsStr).then(() => {
       setIsActivated(true);
       setTimeout(() => {
@@ -108,6 +119,11 @@ export default function Home() {
                     <button onClick={moveItemHandler.bind(this, "Lea", item)}>
                       Lea
                     </button>
+                    <button
+                      onClick={moveItemHandler.bind(this, "shared", item)}
+                    >
+                      Shared Items
+                    </button>
                     <button onClick={deleteIngredient.bind(this, item)}>
                       No need to buy
                     </button>
@@ -116,8 +132,8 @@ export default function Home() {
               })}
             </ul>
           </div>
-          {/* Leaの買い物リスト */}
           <div className={styles.shoppingList}>
+            {/* Leaの買い物リスト */}
             <div>
               <h2>Lea's Shopping List</h2>
               <ul>
@@ -137,6 +153,17 @@ export default function Home() {
                 })}
               </ul>
               <button onClick={handleCopy.bind(null, "Kenta")}>Copy</button>
+              <span className="message">{isActivated ? "Copied!!" : ""}</span>
+            </div>
+            {/* 共通の買い物リスト */}
+            <div>
+              <h2>Shared items Shopping List</h2>
+              <ul>
+                {sharedItems.map((item) => {
+                  return <li key={item}>{item}</li>;
+                })}
+              </ul>
+              <button onClick={handleCopy.bind(null, "shared")}>Copy</button>
               <span className="message">{isActivated ? "Copied!!" : ""}</span>
             </div>
           </div>

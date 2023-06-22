@@ -73,7 +73,13 @@
 .shoppingList {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .shoppingList > div {
   width: 45%;
+  margin-bottom: 30px;
+}
+
+.shoppingList ul {
+  padding-left: 20px;
 }
