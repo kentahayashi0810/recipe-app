@@ -14,6 +14,7 @@ export default function Home() {
   const [LeaItems, setLeaItems] = useState([]);
   const [KentaItems, setKentaItems] = useState([]);
   const [sharedItems, setSharedItems] = useState([]);
+  const [isAdded, setIsAdded] = useState([]);
 
   const addHandler = (ingredients) => {
     ingredients.map((item) => {
@@ -75,7 +76,7 @@ export default function Home() {
         ? LeaItems.join(", ")
         : "kenta"
         ? KentaItems.join(", ")
-        : SharedItems.join(", ");
+        : sharedItems.join(", ");
     return navigator.clipboard.writeText(ingredientsStr).then(() => {
       setIsActivated(true);
       setTimeout(() => {
