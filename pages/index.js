@@ -15,6 +15,7 @@ export default function Home() {
   const [KentaItems, setKentaItems] = useState([]);
   const [sharedItems, setSharedItems] = useState([]);
   const [isAdded, setIsAdded] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
   const addHandler = (ingredients) => {
     ingredients.map((item) => {
@@ -111,6 +112,23 @@ export default function Home() {
                 );
               })}
             </ul>
+            <input
+              type="text"
+              onChange={() => {
+                setInputValue((prevValue) => event.target.value);
+              }}
+              value={inputValue}
+            />
+            <button
+              onClick={() => {
+                setShoppingList((prevShoppingList) => {
+                  return [...prevShoppingList, inputValue];
+                });
+                setInputValue("");
+              }}
+            >
+              Add
+            </button>
           </div>
           {/* 必要材料と振り分けボタンの書き出し */}
           <div className={styles.container}>
