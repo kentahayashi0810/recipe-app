@@ -14,20 +14,20 @@
   },
   {
     "name": "Feta cheese Salad",
-    "ingredients": ["lettuce", "white vinegar", "Mustard", "feta cheese"],
+    "ingredients": ["lettuce", "white vinegar", "mustard", "feta cheese"],
     "url": ""
   },
   {
     "name": "Hachis Parmentier",
-    "ingredients": ["Potatoes", "Shredded Cheese", "Minced Meat", "Milk"],
+    "ingredients": ["potatoes", "shredded cheese", "minced meat", "milk"],
     "url": ""
   },
   {
     "name": "Nabe",
     "ingredients": [
-      "Hakusai",
-      "bean sprout",
-      "Nabe soup",
+      "hakusai",
+      "moyashi",
+      "nabe soup",
       "minced chicken",
       "ginger",
       "carrot"
@@ -36,7 +36,7 @@
   },
   {
     "name": "Spinach Saussage",
-    "ingredients": ["Spinach", "Saussages", "Sesami oil"],
+    "ingredients": ["spinach", "saussages", "sesami oil"],
     "url": ""
   },
   {
@@ -46,7 +46,7 @@
   },
   {
     "name": "Hamburger",
-    "ingredients": ["Buns", "hamburger stakes", "lettuce", "cheese", "onion"],
+    "ingredients": ["buns", "hamburger stakes", "lettuce", "cheese", "onion"],
     "url": ""
   },
   {
@@ -94,6 +94,11 @@
       "ketchup",
       "lemon"
     ],
+    "url": ""
+  },
+  {
+    "name": "Japanese Curry",
+    "ingredients": ["beef", "potatoes", "onion", "curry roux", "rice"],
     "url": ""
   }
 ]

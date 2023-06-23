@@ -17,7 +17,12 @@ export default function Home() {
 
   const addHandler = (ingredients) => {
     ingredients.map((item) => {
-      if (shoppingList.includes(item)) {
+      if (
+        shoppingList.includes(item) ||
+        LeaItems.includes(item) ||
+        KentaItems.includes(item) ||
+        sharedItems.includes(item)
+      ) {
         return;
       } else {
         setShoppingList((prevShoppingList) => {
@@ -82,7 +87,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Recipe App</title>
+        <title>Shopping List App</title>
         <meta name="description" content="Recipe App" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -91,7 +96,7 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.inner}>
           <div className={styles.container}>
-            <h1 className={styles.title}>Recipe App</h1>
+            <h1 className={styles.title}>Shopping List App</h1>
             {/* 料理リストの書き出し */}
             <ul className={styles.recipelist}>
               {recipes.map((recipe, index) => {
@@ -113,20 +118,24 @@ export default function Home() {
                 return (
                   <li key={index}>
                     <span>{item}</span>
-                    <button onClick={moveItemHandler.bind(this, "Kenta", item)}>
-                      Kenta
-                    </button>
-                    <button onClick={moveItemHandler.bind(this, "Lea", item)}>
-                      Lea
-                    </button>
-                    <button
-                      onClick={moveItemHandler.bind(this, "shared", item)}
-                    >
-                      Shared Items
-                    </button>
-                    <button onClick={deleteIngredient.bind(this, item)}>
-                      No need to buy
-                    </button>
+                    <div>
+                      <button
+                        onClick={moveItemHandler.bind(this, "Kenta", item)}
+                      >
+                        Kenta
+                      </button>
+                      <button onClick={moveItemHandler.bind(this, "Lea", item)}>
+                        Lea
+                      </button>
+                      <button
+                        onClick={moveItemHandler.bind(this, "shared", item)}
+                      >
+                        Shared Items
+                      </button>
+                      <button onClick={deleteIngredient.bind(this, item)}>
+                        No need to buy
+                      </button>
+                    </div>
                   </li>
                 );
               })}
@@ -169,6 +178,8 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+      <footer></footer>
     </>
   );
 }

@@ -9,7 +9,7 @@
 }
 
 .container {
-  padding: 60px 0;
+  padding-bottom: 60px;
 }
 
 .title {
@@ -55,7 +55,6 @@
 .addedIngredients {
   text-align: center;
   display: grid;
-
   gap: 20px;
   grid-template-columns: 1fr 1fr 1fr;
 }
@@ -82,4 +81,70 @@
 
 .shoppingList ul {
   padding-left: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .recipe {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .recipe span {
+    display: inline-block;
+    padding-right: 30px;
+    margin-bottom: 0;
+    text-align: left;
+  }
+  .recipe button {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .addedIngredients {
+    text-align: left;
+    display: block;
+  }
+  .addedIngredients li {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .addedIngredients li span {
+    display: block;
+    margin-right: auto;
+    font-size: 24px;
+    min-width: 120px;
+  }
+  .addedIngredients button {
+    margin: 5px;
+    padding: 4px;
+    font-size: 18px;
+  }
+
+  .shoppingList {
+    display: block;
+  }
+  .shoppingList > div {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .shoppingList h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .shoppingList ul {
+    padding-left: 0;
+  }
+  .shoppingList li {
+    list-style: none;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .shoppingList button {
+    display: block;
+    margin: 0 auto;
+  }
 }
